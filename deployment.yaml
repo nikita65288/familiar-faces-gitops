@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-service
+  namespace: familiar-faces
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-service
+  template:
+    metadata:
+      labels:
+        app: auth-service
+    spec:
+      containers:
+      - name: auth-service
+        image: ghcr.io/nikita65288/auth-service:latest 
+        ports:
+        - containerPort: 9000 #
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "prod"
+        - name: CONFIG_SERVER_URL
+          value: "http://config-service:8888"
+        # Get passwords from cluster Secrets
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secrets
+              key: postgres-password

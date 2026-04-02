@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: eureka-ingress
+  namespace: familiar-faces
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: eureka.<IP_VPS>.sslip.io # TODO: Set IP 
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: discovery-service
+            port:
+              number: 8761

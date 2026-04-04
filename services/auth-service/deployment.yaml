@@ -23,6 +23,13 @@ spec:
           value: "prod"
         - name: SPRING_CLOUD_CONFIG_URI
           value: "http://config-service:8888"
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: jwt-secret
+        - name: JWT_EXPIRATION
+          value: "86400000"
         - name: DB_HOST
           value: "postgres"
         # Get credentials from cluster Secrets

@@ -23,6 +23,8 @@ spec:
           value: "prod"
         - name: SPRING_CLOUD_CONFIG_URI
           value: "http://config-service:8888"
+        - name: DB_HOST
+          value: "postgres"
         # Get credentials from cluster Secrets
         - name: DB_USER
           valueFrom:
@@ -33,4 +35,4 @@ spec:
           valueFrom:
             secretKeyRef:
               name: db-secrets
-              key: universal-password
+              key: universal-password 

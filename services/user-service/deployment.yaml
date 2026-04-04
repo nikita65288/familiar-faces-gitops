@@ -27,11 +27,11 @@ spec:
           valueFrom:
             secretKeyRef:
               name: db-secrets
-              key: postgres-user
+              key: universal-user
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
               name: db-secrets
-              key: postgres-password
+              key: universal-password
         - name: DB_HOST
           value: "postgres"

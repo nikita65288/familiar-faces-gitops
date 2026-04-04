@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-init-script
+  namespace: familiar-faces
+data:
+  init.sql: |
+    CREATE DATABASE auth_service_db;
+    CREATE DATABASE user_service_db;
+    CREATE DATABASE chat_service_db;

@@ -36,15 +36,15 @@ spec:
         - name: xpack.security.enabled
           value: "false" 
         - name: ES_JAVA_OPTS
-          value: "-Xms512m -Xmx512m" 
+          value: "-Xms2g -Xmx2g"
         volumeMounts:
         - name: elasticsearch-data
           mountPath: /usr/share/elasticsearch/data
         resources:
           limits:
-            memory: 1Gi
+            memory: 4Gi
           requests:
-            memory: 512Mi  
+            memory: 4Gi  
       volumes:
       - name: elasticsearch-data
         persistentVolumeClaim:

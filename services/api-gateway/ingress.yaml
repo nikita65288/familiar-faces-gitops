@@ -9,7 +9,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-  - host: api.<VPS_IP>.sslip.io # TODO: VPS IP
+  - host: api.193.187.94.176.sslip.io 
     http:
       paths:
       - path: /

@@ -1,0 +1,63 @@
+# services/fleet.yaml
+namespace: familiar-faces
+
+# 1. Config Service (первый)
+apiVersion: fleet.cattle.io/v1alpha1
+kind: Bundle
+metadata:
+  name: config-service
+  namespace: fleet-local
+spec:
+  paths:
+    - ./config-service
+  targets:
+    - clusterSelector: {}
+
+---
+# 2. Discovery Service (зависит от Config Service)
+apiVersion: fleet.cattle.io/v1alpha1
+kind: Bundle
+metadata:
+  name: discovery-service
+  namespace: fleet-local
+  annotations:
+    fleet.cattle.io/depends-on: config-service
+spec:
+  paths:
+    - ./discovery-service
+  targets:
+    - clusterSelector: {}
+
+---
+# 3. Все бизнес-микросервисы (зависят от Discovery Service, запускаются параллельно)
+apiVersion: fleet.cattle.io/v1alpha1
+kind: Bundle
+metadata:
+  name: business-services
+  namespace: fleet-local
+  annotations:
+    fleet.cattle.io/depends-on: discovery-service
+spec:
+  paths:
+    - ./auth-service
+    - ./user-service
+    - ./chat-service
+    - ./media-service
+    - ./notification-service
+  targets:
+    - clusterSelector: {}
+
+---
+# 4. API Gateway (зависит от всех бизнес-сервисов)
+apiVersion: fleet.cattle.io/v1alpha1
+kind: Bundle
+metadata:
+  name: api-gateway
+  namespace: fleet-local
+  annotations:
+    fleet.cattle.io/depends-on: business-services
+spec:
+  paths:
+    - ./api-gateway
+  targets:
+    - clusterSelector: {}

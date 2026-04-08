@@ -13,6 +13,8 @@ spec:
       labels:
         app: media-service
     spec:
+      imagePullSecrets:
+      - name: ghcr-secret
       containers:
       - name: media-service
         image: ghcr.io/nikita65288/media-service:latest

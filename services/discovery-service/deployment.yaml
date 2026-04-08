@@ -13,6 +13,8 @@ spec:
       labels:
         app: discovery-service
     spec:
+      imagePullSecrets:
+      - name: ghcr-secret
       containers:
       - name: discovery-service
         image: ghcr.io/nikita65288/discovery-service:latest

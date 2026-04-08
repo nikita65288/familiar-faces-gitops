@@ -7,7 +7,7 @@ metadata:
     kubernetes.io/ingress.class: traefik
 spec:
   rules:
-  - host: kibana.<VPS_IP>.sslip.io # TODO: add VPS IP
+  - host: kibana.193.187.94.176.sslip.io 
     http:
       paths:
       - path: /

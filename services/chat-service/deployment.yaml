@@ -13,6 +13,8 @@ spec:
       labels:
         app: chat-service
     spec:
+      imagePullSecrets:
+      - name: ghcr-secret
       containers:
       - name: chat-service
         image: ghcr.io/nikita65288/chat-service:latest

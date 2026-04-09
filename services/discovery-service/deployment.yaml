@@ -21,6 +21,8 @@ spec:
         ports:
         - containerPort: 8761
         env:
+        - name: LOGSTASH_DESTINATION
+          value: "logstash:5044"
         - name: SPRING_PROFILES_ACTIVE
           value: "prod"
         - name: JAVA_TOOL_OPTIONS

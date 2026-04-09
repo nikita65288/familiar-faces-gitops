@@ -21,6 +21,8 @@ spec:
         ports:
         - containerPort: 9001
         env:
+        - name: LOGSTASH_DESTINATION
+          value: "logstash:5044"
         - name: SPRING_PROFILES_ACTIVE
           value: "prod"
         - name: SPRING_CONFIG_IMPORT

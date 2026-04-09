@@ -40,7 +40,7 @@ spec:
               name: git-secrets
               key: git-token
         - name: JAVA_TOOL_OPTIONS
-          value: "-XX:MaxRAMPercentage=75.0"
+          value: "-Dlogstash.destination=logstash:5044 -XX:MaxRAMPercentage=75.0"
         resources:
           limits:
             memory: "512Mi" 

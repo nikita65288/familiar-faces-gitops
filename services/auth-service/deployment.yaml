@@ -25,6 +25,8 @@ spec:
           value: "prod"
         - name: SPRING_CONFIG_IMPORT
           value: "configserver:http://config-service:8888/"
+        - name: LOGSTASH_DESTINATION
+          value: "logstash:5044"
         - name: JWT_SECRET
           valueFrom:
             secretKeyRef:

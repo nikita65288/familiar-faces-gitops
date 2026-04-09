@@ -35,7 +35,7 @@ spec:
         - name: JWT_EXPIRATION
           value: "86400000"
         - name: JAVA_TOOL_OPTIONS
-          value: "-XX:MaxRAMPercentage=75.0"
+          value: "-Dlogstash.destination=logstash:5044 -XX:MaxRAMPercentage=75.0"
         resources:
           limits:
             memory: "1Gi"

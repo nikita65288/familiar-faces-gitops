@@ -27,18 +27,19 @@ spec:
           value: "prod"
         - name: SPRING_CONFIG_IMPORT
           value: "configserver:http://config-service:8888/"
-        - name: SPRING_DATASOURCE_USERNAME
+        - name: DB_HOST
+          value: "postgres"
+        # Get credentials from cluster Secrets
+        - name: DB_USER
           valueFrom:
             secretKeyRef:
               name: db-secrets
               key: universal-user
-        - name: SPRING_DATASOURCE_PASSWORD
+        - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
               name: db-secrets
-              key: universal-password
-        - name: SPRING_DATASOURCE_URL
-          value: "jdbc:postgresql://postgres:5432/user_service_db"
+              key: universal-password 
         - name: JAVA_TOOL_OPTIONS
           value: "-XX:MaxRAMPercentage=75.0"
         resources:

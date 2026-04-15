@@ -61,3 +61,18 @@ spec:
     - ./api-gateway
   targets:
     - clusterSelector: {}
+
+---
+# 5. Frontend (зависит от API Gateway)
+apiVersion: fleet.cattle.io/v1alpha1
+kind: Bundle
+metadata:
+  name: frontend
+  namespace: fleet-local
+  annotations:
+    fleet.cattle.io/depends-on: api-gateway
+spec:
+  paths:
+    - ./frontend
+  targets:
+    - clusterSelector: {}    

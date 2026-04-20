@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: app.193.187.94.176.sslip.io
+    - host: www.nikitanfriends.fun
       http:
         paths:
           - path: /
@@ -18,3 +18,13 @@ spec:
                 name: frontend
                 port:
                   number: 80
+    - host: nikitanfriends.fun
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80                  

@@ -9,7 +9,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-  - host: nikitanfriends.fun
+  - host: www.nikitanfriends.fun
     http:
       paths:
       - path: /

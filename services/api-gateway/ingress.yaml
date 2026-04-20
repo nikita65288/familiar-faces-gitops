@@ -8,6 +8,7 @@ metadata:
     # For WebSocket (chat-service)
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
+  ingressClassName: traefik
   rules:
   - host: api.nikitanfriends.fun 
     http:

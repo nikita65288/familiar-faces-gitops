@@ -9,6 +9,9 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   ingressClassName: traefik
+  tls:
+    - hosts:
+        - api.nikitanfriends.fun
   rules:
   - host: api.nikitanfriends.fun 
     http:
